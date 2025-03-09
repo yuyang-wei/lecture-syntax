@@ -1,0 +1,510 @@
+\chapter{Phrase structure}
+
+\section{Categories}
+
+
+
+
+\section{Constituency and hierarchical structure}
+
+What do we mean by saying that sentences have an internal syntactic structure? How can we represent that structure?
+
+The native speaker intuitively knows that sound sequences in sentences are structured into successively larger sets or groups which we call \textbf{constituents}. If sound sequences had only \textbf{linear} structure (whereby one sound precedes the next), then sentences would be written as a continuous sequence of sounds.
+\pex
+Thechildfoundapuppy\label{soundsequence}
+\xe
+But sentences aren't unstructured linear sequences of sounds. Any native speaker of English can tell you that the sounds in (\ref{soundsequence}) are grouped into words, and can tell you what the word-divisions are.
+\pex
+\a The child found a puppy.
+\a \ljudge{*}Th ech ildf ound apup py
+\a \ljudge{*}T he chi ldfo und ap uppy
+\xe
+However, the English spelling system provides only a very inadequate, inconsistent and sporadic representation of the way in which words are structured into phrases. For instance, native speakers of English all agree that \emph{the} ``goes with'' or ``modifies'' \emph{child}, and yet the English spelling system provides no representation of this fact.
+\pex
+%\Tree[ the child ]
+\xe
+Likewise, native speakers of English all agree that \emph{a} ``goes with'' \emph{puppy}, not with e.g. \emph{found}.
+\pex
+%\Tree[ a puppy ]
+\xe
+Furthermore, \emph{found} ``goes with'' the phrase \emph{a puppy} (not e.g. \emph{child}).
+\pex
+%\Tree[ found [ a puppy ] ]
+\xe
+Finally, the whole sequence \emph{The child found a puppy} is also a structural unit or constituent -- one which we traditionally call a \textbf{clause} or a \textbf{sentence}.
+\pex
+%\Tree[ [ the child ] [ found [ a puppy ] ] ] \label{key}
+\xe
+
+
+
+\section{Phrase structure rules}
+
+Phrase structure rules \textbf{generate} representations of syntactic structure (= specify how sentences are structured out of phrases, and phrases out of words) (cf.\ \cite[41]{radford1981}; \cite[57]{chomsky1986knowledge}).
+\pex
+\a S $\rightarrow$ NP VP\label{srule}
+\a VP $\rightarrow$ V NP\label{vprule}
+\a NP $\rightarrow$ D N\label{nprule}
+\xe
+S $\rightarrow$ NP VP = ``You can form a clause by taking a noun phrase immediately followed by a verb phrase''.
+\pex
+\begin{forest}
+	[S [NP] [VP]]
+\end{forest}
+\xe
+VP $\rightarrow$ V NP = ``You can form a verb phrase by taking a verb immediately followed by a noun phrase''.
+\pex
+\begin{forest}
+	[S [NP] [VP [V] [NP]]]
+\end{forest}
+\xe
+NP $\rightarrow$ D N = ``You can form a noun phrase by taking a determiner immediately followed by a noun''.
+\pex
+\begin{forest}
+	[S [NP [D] [N]] [VP [V] [NP [D] [N]]]]
+\end{forest}
+\xe
+
+\pex
+\begin{forest}
+	[S [NP [D\\the] [N\\child]] [VP [V\\found] [NP [D\\a] [N\\puppy]]]]
+\end{forest}
+\xe
+\pex
+\begin{forest}
+	[S [NP [D\\this] [N\\girl]] [VP [V\\invited] [NP [D\\her] [N\\friends]]]]
+\end{forest}
+\xe
+\pex
+\begin{forest}
+	[S [NP [D\\a] [N\\lady]] [VP [V\\bought] [NP [D\\that] [N\\book]]]]
+\end{forest}
+\xe
+The rule system above generates only a finite number of sentences. We can increase the \textbf{generative capacity} of the grammar (= the set of structure that it generates) by expanding the phrase structure rules.
+
+
+\subsection{Noun phrases (NPs)}
+Not all NPs consist of a determiner and a noun. The simplest NPs contain only a noun.
+\pex
+\a John
+\a water
+\a cats
+\xe
+\pex
+\a NP $\rightarrow$ N
+\a
+\begin{forest}
+	[NP [N\\water]]
+\end{forest}
+\xe
+Determiners are optional. We must indicate their optionality in the rule. We use parentheses ( ) to indicate optional elements:
+\pex
+NP $\rightarrow$ (D) N
+\xe
+Nouns can also be optionally modified by adjectives (AdjP: see below).
+\pex
+\a the big box
+\a his yellow binder
+\xe
+\pex
+\a NP $\rightarrow$ (D) (AdjP) N
+\a
+\begin{forest}
+[NP [D\\the] [AdjP [big,roof]] [N\\box] ]
+\end{forest}
+\xe
+Nouns can also take prepositional phrase (PP) modifiers.
+\pex
+\a the big box of crayons
+\a his yellow binder with the red stripe
+\xe
+\pex
+\a NP $\rightarrow$ (D) (AdjP) N (PP)
+\a
+\begin{forest}
+	[NP [D\\the] [AdjP [big,roof]] [N\\box] [PP [of crayons,roof]] ]
+\end{forest}
+\xe
+More than one adjective and more than one PP can occur within an NP:
+\pex
+\a the [\textbf{big}] [\textbf{yellow}] box [\textbf{of cookies}] [\textbf{with the pink lid}]
+\a
+\begin{forest}
+	[NP [D\\the] [AdjP [big,roof]] [AdjP [yellow,roof]] [N\\box] [PP [of cookies,roof]] [PP [with the pink lid,roof]] ]
+\end{forest}
+\xe
++ means ``repeat this category as many times as needed'':
+\pex
+NP $\rightarrow$ (D) (AdjP+) N (PP+)
+\xe
+
+
+
+\subsection{Adjectival phrases (AdjPs) and adverbial phrases (AdvPs)}
+Consider what modifies what in the following two NPs:
+\pex
+\a the big yellow book\label{tbyb}
+\a the very yellow book\label{tvyb}
+\xe
+The structures of these two phrases are quite different. (\ref{tbyb}) has two adjective constituents that modify the N, whereas (\ref{tvyb}) has only one [\emph{very yellow}]. This constituent is called an \textbf{adjective phrase (AdjP)}.
+\pex
+\a AdjP $\rightarrow$ (AdvP) Adj
+\a
+\begin{forest}
+	[AdjP [AdvP [Adv\\very] ] [Adj\\yellow] ]
+\end{forest}
+\xe
+\pex
+\a
+\begin{forest}
+	[NP [D\\the] [AdjP [Adj\\big] ] [AdjP [Adj\\yellow] ] [N\\book] ]
+\end{forest}
+\a
+\begin{forest}
+[NP [D\\the] [AdjP [AdvP [Adv\\very] ] [Adj\\yellow] ] [N\\book] ]
+\end{forest}
+\xe
+This leads us to an important restriction on tree structures:
+\pex
+\emph{Principle of Modification (informal)}\\
+Modifiers are always attached within the phrase they modify.
+\xe
+A very similar rule is used to introduce AdvPs:
+\pex
+\a AdvP $\rightarrow$ (AdvP) Adv
+\a very quickly
+\a
+\begin{forest}
+[AdvP [AdvP [Adv\\very] ] [Adv\\quickly] ]
+\end{forest}
+\xe
+Here is a common mistake to avoid: the AdvP rule specifies that its modifier is another AdvP, not Adv.
+\pex
+\ljudge{*}
+\begin{forest}
+[AdvP [Adv] [Adv] ]
+\end{forest}
+\xe
+In order to understand this a little better, let's introduce a new concept: \textbf{heads}. The head of a phrase is the word that gives the phrase its category. For example, the head of the NP is the N, the head of a PP is the P, the head of the AdjP is Adj and the head of an AdvP is Adv. Let's look at an adjective phrase and compare it to a complex AdvP:
+\pex
+\a
+\begin{forest}
+[AdjP [AdvP [\textbf{Adv}\\very] ] [\textbf{Adj}\\yellow] ]
+\end{forest}
+\a
+\begin{forest}
+[AdvP [AdvP [\textbf{Adv}\\very] ] [\textbf{Adv}\\quickly] ]
+\end{forest}
+\label{veryquicklytree}
+\xe
+In \emph{very quickly} there are two adverbs, so there are two AdvPs: \textbf{each has its own head}.
+\pex
+\emph{Principle of Modification (revised)}\\
+If an XP (that is, a phrase with some category X) modifies some head Y, then XP must be a sister to Y (i.e., a daughter of YP).
+\xe
+\pex
+\begin{forest}
+	[YP [XP [X] ] [Y] ]
+\end{forest}
+\xe
+Notice that this relationship is asymmetric: XP modifies Y, but Y does NOT modify XP.
+
+
+\subsection{Prepositional phrases (PPs)}
+
+Most PPs take the form of a preposition (the head) followed by an NP:
+\pex
+\a PP $\rightarrow$ P NP
+\a
+\begin{forest}
+[PP[ P\\to] [NP [D\\the] [N\\store] ] ]
+\end{forest}
+\xe
+PPs can also be optionally modified by adverbs (AdvPs).
+\pex
+\a She hit him [\textbf{right} on the nose].
+\a PP $\rightarrow$ (AdvP) P NP
+\a
+\begin{forest}
+[PP [AdvP [Adv\\right] ] [P\\on] [NP [D\\the] [N\\nose] ] ]
+\end{forest}
+\xe
+
+\subsection{Verb phrases (VPs)}
+
+Minimally a VP consists of a single verb. This is the case of intransitives.
+\pex
+\a John left.
+\a VP $\rightarrow$ V
+\a
+\begin{forest}
+[VP [V\\left] ]
+\end{forest}
+\xe
+Verbs may be modified by adverbs (AdvPs), which are, of course, optional:
+\pex
+\a John left quickly.
+\a VP $\rightarrow$ V (AdvP)
+\a
+\begin{forest}
+[VP [V\\left] [AdvP [Adv\\quickly] ] ]
+\end{forest}
+\xe
+Many of these adverbs can appear on either side of the V, and you can have as many AdvPs as you like:
+\pex
+\a John quickly left.
+\a John deliberately always left quietly early.
+\a VP $\rightarrow$ (AdvP+) V (AdvP+)
+\a
+\begin{forest}
+[VP [AdvP [Adv\\deliberately] ] [AdvP [Adv\\always] ] [V\\left] [AdvP [Adv\\quietly] ] [AdvP [Adv\\early] ] ]
+\end{forest}
+\xe
+Transitive verbs take an NP object.  These NPs appear immediately after the V and before any AdvPs:
+\pex
+\a John frequently kissed his mother-in-law.
+\a John kissed his mother-in-law quietly.
+\a \ljudge{*}John kissed quietly his mother-in-law.
+\a VP $\rightarrow$ (AdvP+) V (NP) (AdvP+)
+\a
+\begin{forest}
+[VP [V\\kissed] [NP [D\\his] [N\\{mother-in-law}] ] [AdvP [Adv\\quietly] ] ]
+\end{forest}
+\xe
+It is also possible to have two NPs in a sentence, for example
+with a double object verb like \emph{spare}. Both these NPs must come between the verb and any AdvPs:
+\pex
+I spared [the student] [any embarrassment] [yesterday].
+\xe
+We can have a maximum of only two argument NPs.
+\pex
+\a VP $\rightarrow$ (AdvP+) V (NP) (NP) (AdvP+)
+\a
+\begin{forest}
+[VP [V\\spare] [NP [D\\the] [N\\student] ] [NP [D\\any] [N\\embarrassment] ] [AdvP [Adv\\yesterday] ] ]
+\end{forest}
+\xe
+Verbs can be modified by PPs as well. These PPs can be arguments as in some ditransitive verbs or they can be simple modifiers. These PPs can appear either after an adverb or before it.
+\pex
+\a John put the pig on the table.
+\a John frequently got his buckets from the store for a dollar.
+\a VP $\rightarrow$ (AdvP+) V (NP) (NP) (AdvP+) (PP+) (AdvP+)
+\a
+\begin{forest}
+	[VP,for tree={s sep=1em} [AdvP [Adv\\frequently] ] [V\\got] [NP [D\\his] [N\\buckets] ] [PP [P\\from] [NP [D\\the] [N\\store] ] ] [PP [P\\for] [NP [D\\a] [N\\dollar] ] ] ]
+\end{forest}
+\xe
+
+
+\subsection{Clauses}
+
+A clause (or sentence = S) consists of a subject NP and a VP.
+\pex
+\a S $\rightarrow$ NP VP
+\a
+\begin{forest}
+	[S [NP [D\\the] [N\\child] ] [VP [V\\found] [NP [D\\a] [N\\puppy] ] ] ]
+\end{forest}
+\xe
+S can also include elements of the category INFL, such as modal verbs and auxiliary verbs.
+\pex
+\a The girl will invite the boy.
+\a The girl has invited the boy.
+\xe
+\pex
+\a S $\rightarrow$ NP (I) VP
+\a
+\begin{forest}
+	[S [NP [D\\the] [N\\girl] ] [I\\will] [VP [V\\invite] [NP [D\\the] [N\\boy] ] ] ]
+\end{forest}
+\xe
+A clause can be embedded inside another. \textbf{Embedded clauses} (S$'$; pronounced ``ess-bar'') are often introduced by a complementizer (C) like \emph{that} or \emph{if}.
+\pex
+John said [\textbf{that} he kissed the girl].
+\xe
+\pex
+\a S$'$ $\rightarrow$ C S
+\a
+\begin{forest}
+[S [NP [N\\John] ] [VP [V\\said] [S\rlap{$'$} [C\\that] [S [NP [N\\he] ] [VP [V\\kissed] [NP [D\\the] [N\\girl] ] ] ] ] ] ]
+\end{forest}
+\xe
+We assume that all embedded clauses are S$'$s, whether or not they have a complementizer. We further assume that an embedded clause without a complementizer actually has a null (= unpronounced) complementizer $\emptyset$.
+\pex
+\begin{forest}
+	[S [NP [N\\John] ] [VP [V\\said] [S\rlap{$'$} [C\\ $\emptyset$] [S [NP [N\\he] ] [VP [V\\kissed] [NP [D\\the] [N\\girl] ] ] ] ] ] ]
+\end{forest} \label{sbartree}
+\xe
+Embedded clauses appear in a variety of positions. In (\ref{sbartree}), the embedded clause appears in the same slot as the direct object. Embedded clauses can also appear in subject position (called \textbf{clausal subject} or \textbf{sentential subject}):
+\pex
+{[}That John stole the pig] surprised Mary.
+\xe
+We have to modify our S and VP rules to allow embedded clauses. We use curly brackets \{ \} to indicate a choice: \{NP/S$'$\} means that you can have either an NP or an S$'$ but not both.
+\pex
+\a S $\rightarrow$ \{NP/S$'$\} (I) VP
+\a
+\begin{forest}
+[S [S\rlap{$'$} [C\\that] [S [NP [N\\John] ] [VP [V\\stole] [NP [D\\the] [N\\pig] ] ] ] ] [VP [V\\surprised] [NP [N\\Mary] ] ] ]
+\end{forest}
+\xe
+The revised VP rule requires a little more finesse. First, observe that in verbs that allow both an NP and an S$'$ (e.g., \emph{ask}), the S$'$ follows the NP but precedes the PP, essentially in the position of the second NP in the rule (NB: \emph{yesterday} and \emph{over the phone} should be interpreted as modifying \emph{ask}):
+\pex
+\a John asked [Mary] [if Bill abandoned the investigation] yesterday over the phone.
+\a VP $\rightarrow$ (AdvP+) V (NP) \{NP/S$'$\} (AdvP+) (PP+) (AdvP+)
+\a
+\begin{forest}
+[S,for tree={fit=tight,s sep=1em}
+	[NP [N\\John] ]
+	[VP
+		[V\\asked]
+		[NP [N\\Mary] ]
+		[S\rlap{$'$}
+			[C\\if]
+			[S
+				[NP [N\\Bill] ]
+				[VP
+					[V\\abandoned]
+					[NP
+						[D\\the]
+						[N\\investigation]
+					]
+				]
+			]
+		]
+		[AdvP [Adv\\yesterday] ]
+		[PP [P\\over]
+			[NP
+				[D\\the]
+				[N\\phone]
+			]
+		]
+	]
+]
+\end{forest}
+\xe
+The last revision we have to make to our phrase structure rules is to add the embedded clause as a modifier to NPs.
+\pex
+\a {[}The fact about Bill [that he likes syntax]] bothers Mary.
+\a NP $\rightarrow$ (D) (AdjP+) N (PP+) (S$'$)
+\a
+\begin{forest}
+[S,for tree={fit=tight}
+	[NP
+		[D\\the]
+		[N\\fact]
+		[PP
+			[P\\about]
+			[NP
+				[N\\Bill]
+			]
+		]
+		[S\rlap{$'$}
+			[C\\that]
+			[S
+				[NP
+					[N\\he]
+				]
+				[VP
+					[V\\likes]
+					[NP
+						[N\\syntax]
+					]
+				]
+			]
+		]
+	]
+	[VP
+		[V\\bothers]
+		[NP
+			[N\\Mary]
+		]
+	]
+]
+\end{forest}
+\xe
+
+\subsection{Coordination (Conjunction)}
+
+The coordinated or conjoined constituent is a constituent where two elements with identical categories are joined together with conjunctions like \emph{and}, \emph{or}, \emph{but}, etc.
+\pex
+\a the [blue \textbf{and} red] station wagon
+\a I saw [these dancers \textbf{and} those musicians] smoking something suspicious.
+\a I am [drinking lemonade \textbf{and} eating a brownie].
+\a We went [through the woods \textbf{and} over the bridge].
+\a {[}I've lost my wallet \textbf{or} I've lost my mind.]
+\xe
+Coordination seems to be able to join together two identical categories and create a new identical category out of them.
+\pex
+\a XP $\rightarrow$ XP Conj XP
+\a X $\rightarrow$ X Conj X
+\xe
+\pex
+\a
+\begin{forest}
+[Adj [Adj\\blue] [Conj\\and] [Adj\\red] ]
+\end{forest}
+\a
+\begin{forest}
+[NP [NP [D\\these] [N\\dancers] ] [Conj\\and] [NP [D\\those] [N\\musicians] ] ]
+\end{forest}
+\a
+\begin{forest}
+[VP [VP [V\\drinking] [NP [N\\lemonade] ] ] [Conj\\and] [VP [V\\eating] [NP [D\\a] [N\\brownie] ] ] ]
+\end{forest}
+\a
+\begin{forest}
+[PP [PP [P\\through] [NP [D\\the] [N\\woods] ] ] [Conj\\and] [PP [P\\over] [NP [D\\the] [N\\bridge] ] ] ]
+\end{forest}
+\a
+\begin{forest}
+[S,for tree={s sep=1em}
+[S [NP [N\\I] ] [I\\{'ve}] [VP [V\\lost] [NP [D\\my] [N\\wallet] ] ] ]
+[Conj\\or]
+[S [NP [N\\I] ] [I\\{'ve}] [VP [V\\lost] [NP [D\\my] [N\\mind] ] ] ]
+]
+\end{forest}
+\xe
+
+\subsection{Summary}
+The phrase structure rules discussed above are summarized as follows:
+\pex
+\a S$'$ $\rightarrow$ C S
+\a S $\rightarrow$ \{NP/S$'$\} (I) VP
+\a VP $\rightarrow$ (AdvP+) V (NP) \{NP/S$'$\} (AdvP+) (PP+) (AdvP+)
+\a NP $\rightarrow$ (D) (AdjP+) N (PP+) (S$'$)
+\a PP $\rightarrow$ (AdvP) P NP
+\a AdjP $\rightarrow$ (AdvP) Adj
+\a AdvP $\rightarrow$ (AdvP) Adv
+\a XP $\rightarrow$ XP Conj XP
+\a X $\rightarrow$ X Conj X
+\xe
+These rules account for a wide variety of English sentences.
+
+Notice: The S rule has a VP under it. Similarly, the VP rule can take a S$'$ under it, and the S$'$ takes an S. So, the three rules can form a loop and repeat endlessly:
+\pex
+John said that Mary believes that Bill wants that ... etc.
+\xe
+This property, called \textbf{recursion}, accounts partially for the creative nature of human language.
+
+
+\section{Modification and ambiguity}
+
+
+\section{Phrase markers}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
